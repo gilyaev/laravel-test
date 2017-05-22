@@ -57,3 +57,7 @@ php artisan migrate --seed
 ```
 
 Finished visit http://localhost:8080/
+
+## Sample request/response payload for REST API endpoints.
+
+All information can be found here http://docs.laraveltest1.apiary.io

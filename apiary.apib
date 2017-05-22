@@ -1,0 +1,198 @@
+FORMAT: 1A
+HOST: http://localhost:8080/api
+
+# Laravel TEST REST API.
+
+## Requests
+
+### JSON Bodies
+
+All POST, PUT  requests are JSON encoded and must have have content type of `application/json`, or the API will return a `415 Unsupported Media Type` status code.
+
+### HTTP Verbs
+
+We use standard HTTP verbs to indicate intent of a request:
++ `GET` - To retrieve a resource or a collection of resources
++ `POST` - To create a resource
++ `PUT` - To set a resource
++ `DELETE` - To delete a resource
+
+# Group Products
+This section groups products.
+
+## Product [/products/{?sort}]
+
++ Model (application/json)
+
+    ```js
+    {
+        "count": 1,
+        "items": [
+          {
+            "id": "1",
+            "name": "Apple",
+            "price": 99.99,
+            "discount": 20
+          }
+        ]
+    }
+    ```
+    
+
+### Retrieve products [GET]
+
++ Parameters
+    + sort: `-name` (optional, string)
+
+        Comma separated list of sorting rules {direction(+|-)}{field_name}
+
+        + Members
+            + `-name`
+            + `+name`
+            + `-pice`
+            + `+pice`
+
++ Response 200
+
+    [Product][]
+    
+### Add a products [POST]
+
++ Request
+
+    + Attributes
+        + name (string) - product name
+        + price (number) - product price
+
+    + Body
+
+        ```js
+            {
+                "name": "Apple",
+                "price": 99.99
+            }
+        ```
+
++ Response 201
+
+    ```js
+    {
+        "id": 1,
+        "name": "Apple",
+        "price": 99.99,
+        "discount": 0
+    }
+    ```
+
+### Purchase [/products/{id}/buy]
++ Parameters
+    + id: `1` (string) - The id of the product
+    
+#### Buy product [POST]
+
++ Response 201
+
+## Vouchers [/products/{id}/vouchers/{voucher_id}]
++ Parameters
+    + id: `1` (string) - The id of the product
+    + voucher_id: `7` (string) - The id of the voucher
+
+###  Retrieve product's vouchers [GET /products/{id}/vouchers]
+
++ Response 200
+
+    ```js
+    {
+        "count": 1,
+        "items": [
+          {
+            "id": 1,
+            "start_date": "2017-05-13",
+            "end_date": "2017-06-03",
+            "discount": 20
+          }
+        ]
+    }
+    ```
+
+    
+### Bind voucher to product [POST /products/{id}/vouchers]
+
++ Request
+
+    + Attributes
+        + voucher_id (number) - a voucher id
+
+    + Body
+
+        ```js
+            {
+                "voucher_id": 7
+            }
+        ```
++ Response 201
+
+### Unbind voucher to product [DELETE]
+
++ Response 204
+
+# Group Vouchers
+
+## Voucher [/products/vouchers]
+
++ Model (application/json)
+
+    ```js
+    {
+        "count": 1,
+        "items": [
+          {
+            "id": "1",
+            "start_date": "2017-05-14"",
+            "end_date": "2017-05-20",
+            "discount": 20
+          }
+        ]
+    }
+
+### Retrieve vouchers[GET]
+
++ Response 200
+
+    [Voucher][]
+    
+### Add a voucher [POST]
+
++ Request
+
+    + Attributes
+        + start_date (string) - start date
+        + end_date (string) - end date
+        + discount (enum[number]) - discount tiers
+            
+            + Members
+                + `10`
+                + `15`
+                + `20`
+                + `25`
+
+    + Body
+
+        ```js
+            {
+                "start_date": "2017-04-20",
+                "end_date": "2017-02-20",
+                "discount": 10
+            }
+        ```
+
++ Response 201
+
+    ```js
+    {
+        "id": 1,
+        "start_date": "2017-04-20",
+        "end_date": "2017-02-20",
+        "discount": 10
+    }
+    ```
