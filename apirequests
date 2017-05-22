@@ -1,0 +1,16 @@
+curl -vX POST -d '{"name": "CompTable", "price": 150}' http://localhost:8080/api/products \
+--header "Content-Type: application/json"
+
+curl -vX POST http://localhost:8080/api/products/4/buy \
+--header "Content-Type: application/json"
+
+curl -vX POST -d '{"discount": 25, "start_date": "2017-05-15", "end_date": "2017-05-25"}' http://localhost:8080/api/vouchers \
+--header "Content-Type: application/json"
+
+curl -vX POST -d '{"voucher_id": 3}' http://localhost:8080/api/products/4/vouchers \
+--header "Content-Type: application/json"
+
+curl -vX DELETE http://localhost:8080/api/products/1/vouchers/2 \
+--header "Content-Type: application/json"
+
+
