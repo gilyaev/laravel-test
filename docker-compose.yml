@@ -18,13 +18,10 @@ services:
             - ./:/var/www
         links:
             - database
-            - cache
         environment:
             - "APP_NAME=Test task for Lead PHP position from AgileEngine"
             - "DB_PORT=3306"
             - "DB_HOST=database"
-            - "REDIS_PORT=6379"
-            - "REDIS_HOST=cache"
     database:
         image: mysql:5.6
         environment:
@@ -32,7 +29,3 @@ services:
             - "MYSQL_DATABASE=shop"
         ports:
             - "33061:3306"
-    cache:
-        image: redis:3.0
-        ports:
-            - "63791:6379"
