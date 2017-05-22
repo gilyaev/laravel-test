@@ -18,9 +18,9 @@
 Get source code
 
 ```bash
-# git clone git@github.com:gilyaev/laravel-test.git ./test-laravel
-# cd ./test-laravel
-# cp .env.example .env
+git clone git@github.com:gilyaev/laravel-test.git ./test-laravel
+cd ./test-laravel
+cp .env.example .env
 ```
 
 Change database setting (.env file)
@@ -64,6 +64,6 @@ All information can be found here http://docs.laraveltest1.apiary.io
 ## Testing
 
 ```bash
-# cd ./test-laravel
-# vendor/bin/phpunit tests/
+cd ./test-laravel
+vendor/bin/phpunit tests/
 ```
