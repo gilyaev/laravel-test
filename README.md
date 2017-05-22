@@ -13,6 +13,10 @@
 
 ## Installation
 
+### General set up steps
+
+Get source code
+
 ```bash
 # git clone git@github.com:gilyaev/laravel-test.git ./test-laravel
 # cd ./test-laravel
@@ -36,7 +40,7 @@ Install application dependencies
 composer install
 ```
 
-### Via Docker
+### Run via Docker
 
 **Requirements:**
 
@@ -49,14 +53,9 @@ Run application
 docker-compose up -d
 ```
 
-Generate application key  and run database migrations with pre-seeded data.
+### Run without Docker
 
-```bash
-php artisan key:generate
-php artisan migrate --seed
-```
-Finished visit http://localhost:8080/
-
+See https://laravel.com/docs/5.4/installation
 
 ## Sample request/response payload for REST API endpoints.
 
