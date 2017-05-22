@@ -13,13 +13,6 @@
 
 ## Installation
 
-### Via Docker
-
-**Requirements:**
-
-- Docker (https://www.docker.com)
-- Docker compose (https://docs.docker.com/compose/)
-
 ```bash
 # git clone git@github.com:gilyaev/laravel-test.git ./test-laravel
 # cd ./test-laravel
@@ -43,6 +36,13 @@ Install application dependencies
 composer install
 ```
 
+### Via Docker
+
+**Requirements:**
+
+- Docker (https://www.docker.com)
+- Docker compose (https://docs.docker.com/compose/)
+
 Run application 
 
 ```bash
@@ -55,8 +55,8 @@ Generate application key  and run database migrations with pre-seeded data.
 php artisan key:generate
 php artisan migrate --seed
 ```
-
 Finished visit http://localhost:8080/
+
 
 ## Sample request/response payload for REST API endpoints.
 
